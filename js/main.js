@@ -1,55 +1,136 @@
-jQuery(document).ready(function($){
-	//toggle 3d navigation
-	$('.cd-3d-nav-trigger').on('click', function(){
-		toggle3dBlock(!$('.cd-header').hasClass('nav-is-visible'));
-	});
 
-	//select a new item from the 3d navigation
-	$('.cd-3d-nav').on('click', 'a', function(){
-		var selected = $(this);
-		selected.parent('li').addClass('cd-selected').siblings('li').removeClass('cd-selected');
-		updateSelectedNav('close');
-	});
+jQuery(document).ready(function($) {
 
-	$(window).on('resize', function(){
-		window.requestAnimationFrame(updateSelectedNav);
-	});
+  // Header fixed and Back to top button
+  $(window).scroll(function() {
+    if ($(this).scrollTop() > 100) {
+      $('.back-to-top').fadeIn('slow');
+      $('#header').addClass('header-fixed');
+    } else {
+      $('.back-to-top').fadeOut('slow');
+      $('#header').removeClass('header-fixed');
+    }
+  });
 
-	function toggle3dBlock(addOrRemove) {
-		if(typeof(addOrRemove)==='undefined') addOrRemove = true;	
-		$('.cd-header').toggleClass('nav-is-visible', addOrRemove);
-		$('.cd-3d-nav-container').toggleClass('nav-is-visible', addOrRemove);
-		$('main').toggleClass('nav-is-visible', addOrRemove).one('webkitTransitionEnd otransitionend oTransitionEnd msTransitionEnd transitionend', function(){
-			//fix marker position when opening the menu (after a window resize)
-			addOrRemove && updateSelectedNav();
-		});
-	}
+  if ($(this).scrollTop() > 100) {
+    $('.back-to-top').fadeIn('slow');
+    $('#header').addClass('header-fixed');
+  }
 
-	//this function update the .cd-marker position
-	function updateSelectedNav(type) {
-		var selectedItem = $('.cd-selected'),
-			selectedItemPosition = selectedItem.index() + 1, 
-			leftPosition = selectedItem.offset().left,
-			backgroundColor = selectedItem.data('color'),
-			marker = $('.cd-marker');
+  $('.back-to-top').click(function() {
+    $('html, body').animate({
+      scrollTop: 0
+    }, 1500, 'easeInOutExpo');
+    return false;
+  });
 
-		marker.removeClassPrefix('color').addClass('color-'+ selectedItemPosition).css({
-			'left': leftPosition,
-		});
-		if( type == 'close') {
-			marker.one('webkitTransitionEnd otransitionend oTransitionEnd msTransitionEnd transitionend', function(){
-				toggle3dBlock(false);
-			});
-		}
-	}
+  // Initiate the wowjs animation library
+  
 
-	$.fn.removeClassPrefix = function(prefix) {
-	    this.each(function(i, el) {
-	        var classes = el.className.split(" ").filter(function(c) {
-	            return c.lastIndexOf(prefix, 0) !== 0;
-	        });
-	        el.className = $.trim(classes.join(" "));
-	    });
-	    return this;
-	};
+  // Initiate superfish on nav menu
+  $('.nav-menu').superfish({
+    animation: {
+      opacity: 'show'
+    },
+    speed: 400
+  });
+
+  // Mobile Navigation
+  if ($('#nav-menu-container').length) {
+    var $mobile_nav = $('#nav-menu-container').clone().prop({
+      id: 'mobile-nav'
+    });
+    $mobile_nav.find('> ul').attr({
+      'class': '',
+      'id': ''
+    });
+    $('body').append($mobile_nav);
+    $('body').prepend('<button type="button" id="mobile-nav-toggle"><i class="fa fa-bars"></i></button>');
+    $('body').append('<div id="mobile-body-overly"></div>');
+    $('#mobile-nav').find('.menu-has-children').prepend('<i class="fa fa-chevron-down"></i>');
+
+    $(document).on('click', '.menu-has-children i', function(e) {
+      $(this).next().toggleClass('menu-item-active');
+      $(this).nextAll('ul').eq(0).slideToggle();
+      $(this).toggleClass("fa-chevron-up fa-chevron-down");
+    });
+
+    $(document).on('click', '#mobile-nav-toggle', function(e) {
+      $('body').toggleClass('mobile-nav-active');
+      $('#mobile-nav-toggle i').toggleClass('fa-times fa-bars');
+      $('#mobile-body-overly').toggle();
+    });
+
+    $(document).click(function(e) {
+      var container = $("#mobile-nav, #mobile-nav-toggle");
+      if (!container.is(e.target) && container.has(e.target).length === 0) {
+        if ($('body').hasClass('mobile-nav-active')) {
+          $('body').removeClass('mobile-nav-active');
+          $('#mobile-nav-toggle i').toggleClass('fa-times fa-bars');
+          $('#mobile-body-overly').fadeOut();
+        }
+      }
+    });
+  } else if ($("#mobile-nav, #mobile-nav-toggle").length) {
+    $("#mobile-nav, #mobile-nav-toggle").hide();
+  }
+
+  // Smoth scroll on page hash links
+  $('.nav-menu a, #mobile-nav a, .scrollto').on('click', function() {
+    if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') && location.hostname == this.hostname) {
+      var target = $(this.hash);
+      if (target.length) {
+        var top_space = 0;
+
+        if ($('#header').length) {
+          top_space = $('#header').outerHeight();
+
+          if( ! $('#header').hasClass('header-fixed') ) {
+            top_space = top_space - 20;
+          }
+        }
+
+        $('html, body').animate({
+          scrollTop: target.offset().top - top_space
+        }, 1500, 'easeInOutExpo');
+
+        if ($(this).parents('.nav-menu').length) {
+          $('.nav-menu .menu-active').removeClass('menu-active');
+          $(this).closest('li').addClass('menu-active');
+        }
+
+        if ($('body').hasClass('mobile-nav-active')) {
+          $('body').removeClass('mobile-nav-active');
+          $('#mobile-nav-toggle i').toggleClass('fa-times fa-bars');
+          $('#mobile-body-overly').fadeOut();
+        }
+        return false;
+      }
+    }
+  });
+
+  // Gallery - uses the magnific popup jQuery plugin
+  $('.gallery-popup').magnificPopup({
+    type: 'image',
+    removalDelay: 300,
+    mainClass: 'mfp-fade',
+    gallery: {
+      enabled: true
+    },
+    zoom: {
+      enabled: true,
+      duration: 300,
+      easing: 'ease-in-out',
+      opener: function(openerElement) {
+        return openerElement.is('img') ? openerElement : openerElement.find('img');
+      }
+    }
+  });
+
+  // custom code
+
 });
+function display(){
+  document.getElementById("form").style.display="block";
+}
+new WOW().init();
