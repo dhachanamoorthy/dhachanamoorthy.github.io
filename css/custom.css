@@ -211,7 +211,7 @@ body {
 #qualification .box table{
     width: 100%;
     border: 2px solid black;
-    margin-bottom:20px ;
+    /* margin-bottom:20px ; */
 }
 #qualification .box tr{
     height: 40px;
