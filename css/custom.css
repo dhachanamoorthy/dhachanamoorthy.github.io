@@ -32,14 +32,13 @@ body {
     font-weight: 400;
     line-height: 56px;
     color: #fff;
-    text-decoration: underline;
     background: -webkit-linear-gradient(45deg, #85FFBD 0%, #FFFB7D 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
 #intro img{
-    border: 3px solid white;
-    padding: 15px;
+    border: 2px solid white;
+    padding: 5px;
     background-color: white;
     border-radius: 50%;
 }
@@ -90,6 +89,40 @@ body {
         padding: 8px 20px;
         letter-spacing: 0.5px;
     }
+}
+.media-container{
+    position: relative;
+    /* position: block; */
+}
+.social-media-icon{
+    display: inline-block;
+    padding: 5px;
+    padding-bottom: 0px;
+    border-radius: 50px;
+    transition: 0.5s;
+    margin-right: 5px;
+    margin-top: 10px;
+    
+    background: #fff;
+}
+.social-media-icon i{
+    font-size: 34px;
+    color: black;
+    position: relative;
+    /* top: calc(20%);  */
+    font-weight: bold;
+}
+.social-media-icon .fa-instagram{
+    background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+.social-media-icon .fa-telegram{
+    color:rgb(0, 136, 204);
+}
+.social-media-icon .fa-linkedin-square{
+    color:rgb(14, 118, 168);
 }
 .back-to-top {
     position: fixed;
@@ -201,7 +234,6 @@ body {
 @media (max-width: 768px) {
     #qualification .box{
         width: 90%;
-        padding-bottom: 20px;
         overflow-x: auto;
         overflow-y: hidden;
         height: 60vh;
