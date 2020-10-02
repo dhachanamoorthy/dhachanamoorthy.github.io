@@ -133,4 +133,6 @@ jQuery(document).ready(function($) {
 function display(){
   document.getElementById("form").style.display="block";
 }
-new WOW().init();
+if($('#loader').is(":hidden"){
+  new WOW().init();
+}
