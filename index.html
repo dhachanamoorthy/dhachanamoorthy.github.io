@@ -28,8 +28,12 @@
   <link href="css/custom.css" rel="stylesheet"/>
 </head>
 
-<body>
-
+<body onload="$('#loader').hide()">
+    <div id="loader">
+        <div class="indicator">
+          <img src="img/loader.gif"/>
+          </div>
+    </div>
     <section id="intro">
 
       <div class="intro-text">
@@ -38,7 +42,7 @@
           <img class="wow pulse" data-wow-iteration="infinite"  data-wow-delay="0.2s" data-wow-duration="0.9s" src="img/person.svg"/>
         </div>
         <h2 class="wow fadeInRight wobble"  data-wow-delay="0s" data-wow-duration="0.8s">Dhachanamoorthy</h2>
-        <span class="wow fadeInLeft text-border scrollto" data-wow-delay="0.4s" data-wow-duration="0.9s">Full Stack Devoloper</span>
+        <span class="wow fadeInLeft text-border " data-wow-delay="0.4s" data-wow-duration="0.9s">Full Stack Devoloper</span>
         <p class="wow fadeInUp" style="color: black;" data-wow-delay="0.6s" data-wow-duration="0.9s">Wait Till I complete iT</p>
         <div class="media-container text-center">
           <div class="wow rollIn wobble" data-wow-delay="0.6s" data-wow-duration="0.6s" style="display:inline-block">
