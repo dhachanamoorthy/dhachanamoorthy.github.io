@@ -16,7 +16,7 @@
   <!-- <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600&display=swap" rel="stylesheet"> -->
   <!-- Bootstrap CSS File -->
   <link href="lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-
+  
   <!-- Libraries CSS Files -->
   <link href="lib/animate/animate.min.css" rel="stylesheet">
   <link href="lib/font-awesome/css/font-awesome.min.css" rel="stylesheet">
@@ -28,11 +28,10 @@
   <link href="css/custom.css" rel="stylesheet"/>
 </head>
 
-<body onload="new WOW().init();">
+<body onload="$('#loader').hide();new WOW().init();">
     <div id="loader">
         <div class="indicator">
-          
-          <img src="img/loader1.gif"/>
+          <img src="img/loader.gif"/>
           </div>
     </div>
     <section id="intro">
@@ -58,7 +57,32 @@
           </div>
       </div>
     </section>
-    <section id="aboutme" class="wow fadeInUp wobble" data-wow-delay="0.4s" data-wow-duration="0.8s">
+    <section id="nav-bar">
+      <table>
+          <tr>
+              <td id="h">
+                <i class="fa fa-home"></i>
+                <span>Home</span>
+            </td>
+              <td id="a">
+                <i class="fa fa-user"></i>
+                <span>About Me</span>
+              </td>
+              <td  id="q">
+                <i class="fa fa-graduation-cap"></i>
+                <span>Qualification</span>
+              </td>
+              <td id="p"> 
+                <i class="fa fa-cogs"></i>
+                <span>Projects</span>
+              </td>
+            </tr>
+        </table>
+    </section>
+    <section id="aboutme" class="overlay" data-wow-delay="0.4s" data-wow-duration="0.8s">
+      <div class="header">
+        <i class="close fa fa-times-circle"></i>
+      </div>
       <div class="text-center">
       <h2 class="text-border wow fadeInUp wobble" data-wow-delay="0.2s" data-wow-duration="0.8s">About ME <i class="fa fa-user"></i></h2></div>
       <div class="box wow fadeInUp wobble" data-wow-delay="0.4s" data-wow-duration="0.9s">
@@ -86,8 +110,11 @@
         </table>
       </div>
       
-    </section>
-    <section id="qualification" class="wow fadeInUp wobble" data-wow-delay="0.4s" data-wow-duration="0.8s">
+    </section> 
+    <section id="qualification" class="overlay">
+      <div class="header">
+        <i class="close fa fa-times-circle" ></i>
+      </div>
       <div class="text-center">
         <h2 class="text-border wow fadeInUp wobble" data-wow-delay="0.2s" data-wow-duration="0.8s">Qualification <i class="fa fa-graduation-cap"></i></h2></div>
         <div class="box wow fadeInUp wobble" data-wow-delay="0.4s" data-wow-duration="0.9s">
@@ -123,7 +150,7 @@
           </table>
         </div>
     </section>
-  <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
+  <!-- <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a> -->
 
   <!-- JavaScript Libraries -->
   <script src="lib/jquery/jquery.min.js"></script>
@@ -134,6 +161,7 @@
   <script src="lib/superfish/hoverIntent.js"></script>
   <script src="lib/superfish/superfish.min.js"></script>
   <script src="lib/magnific-popup/magnific-popup.min.js"></script>
+  <!-- <script src="https://kit.fontawesome.com/8bcf113340.js" crossorigin="anonymous"></script> -->
   <script src="lib/particle-js/particles.js"></script>
   <script src="lib/particle-js/config.js"></script>
   <script src="js/loader.js"></script>

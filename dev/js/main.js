@@ -1,6 +1,40 @@
 
 jQuery(document).ready(function($) {
+  $(".close").on('click',function(){
+    $sec =$(this).parents('section');
+    $sec.addClass('animated slideOutUp');
+    new WOW().init();
 
+    $sec.one("webkitTransitionEnd otransitionend oTransitionEnd msTransitionEnd transitionend",
+              function(event) {
+                $sec.removeClass('animated slideOutUp');
+                $sec.hide();
+                
+  });
+  });
+  $('#h').on('click',function(){
+    
+    
+  });
+  $('#a').on('click',function(){
+    $('#aboutme').addClass('animated slideInDown');
+    new WOW().init();
+    $('#aboutme').show();
+    $('#aboutme').one("webkitTransitionEnd otransitionend oTransitionEnd msTransitionEnd transitionend",
+              function(event) {
+   
+    $('#aboutme').removeClass('animated slideInDown');
+              });
+  });
+  $('#q').on('click',function(){
+    // alert('Moorthy');
+    $('#qualification').addClass('animated slideInDown');
+    new WOW().init();
+    $('#qualification').show();
+  });
+  $('#p').on('click',function(){
+    
+  });
   // Header fixed and Back to top button
   $(window).scroll(function() {
     if ($(this).scrollTop() > 100) {

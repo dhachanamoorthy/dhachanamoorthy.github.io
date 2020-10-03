@@ -4,9 +4,46 @@ body {
     font-family: 'Josefin Sans', sans-serif;
     overflow-x: hidden;
 }
+#nav-bar{
+    width: 100%;
+    height: 8vh;    
+    background-color: #000;
+}
+#nav-bar td{
+    padding: 5px;
+    width: 25%;
+    height: 100%;
+    border-left:2px solid #fff;
+    border-right:2px solid #fff;
+    text-align: center;
+    color: #fff;
+    /* background-color: #1de099; */
+}
+#nav-bar td:hover{
+    color: #fd5949;
+    transition: 0.3s;
+}
+#nav-bar table{
+    width: 100%;
+}
+#nav-bar td:first-child{
+    width: 20%;
+}
+@media (min-width: 1024px) {
+    #i {
+      background-attachment: fixed;
+    }
+}
+#nav-bar td i{
+    display: block;
+    font-size: 24px;
+}
+#nav-bar td span{
+    display: block;
+}
 #intro{
     width: 100%;
-    height: 100vh;
+    height: 92vh;
     background: linear-gradient(45deg, rgba(131,58,180, 0.8), rgba(253, 29, 29, 0.8),rgba(252, 176, 69, 0.8));
     /* background-image: url("../img/background.jpg"); */
     background-size: cover;
@@ -157,14 +194,56 @@ body {
     bottom: 0;
     transition: none;
   }
-  
+.overlay{
+    width: 100%;
+    height: 100vh;
+    z-index: 100;
+    position: fixed;
+    top:0px;
+    background-color:black;
+} 
+.overlay .header{
+    width: 100%;
+    height: 8vh;
+    top: 0px;
+    color: #fff;
+    text-align: center;
+    padding: 10px;
+    position: fixed;
+}
+.overlay .header i{
+    font-size: 36px;
+    text-align: left;
+}
+.close{
+    color: #fff;
+    float: none;
+}
+.overlay .header .close:hover{
+    font-size: 42px;
+    color: #fff;
+    animation: rotate 3s 1;
+}
+.close{
+    color: #fff;
+    float: none;
+}
+@keyframes rotate{
+    from{
+        transform: rotate(0deg);
+    }
+    to{
+        transform: rotate(2880deg);
+    }
+}
 #aboutme {
     width: 100%;
-    height: 70vh;
+    height: 100vh;
+    display: none;
     /* background: linear-gradient(45deg, rgba(131,58,180, 0.8), rgba(253, 29, 29, 0.8),rgba(252, 176, 69, 0.8)); */
     background: #000; 
     background-size: cover;
-    position: relative;
+    /* position: relative; */
     padding: 30px 0 60px 0;
     font-family: 'Josefin Sans', sans-serif;
 }
@@ -242,17 +321,18 @@ body {
     margin: 0px auto;
 }
 #loader .indicator img{
-    width: 120px;
-    height: 80px;
+    width: 150px;
+    height: 100px;
     transform: scaleX(-1);
 }
+
 #qualification {
     width: 100%;
     height: 100vh;
-    background: linear-gradient(45deg, rgba(131,58,180, 0.8), rgba(253, 29, 29, 0.8),rgba(252, 176, 69, 0.8));
+    background-color: black;
+    display: none;
     /* background: #000;  */
     background-size: cover;
-    position: relative;
     padding: 60px 0 60px 0;
     overflow: hidden;
     font-family: 'Josefin Sans', sans-serif;
@@ -264,7 +344,6 @@ body {
 #qualification .box{
     width: 80%;
     margin: 20px auto;
-    margin-bottom: 130px;
     border-radius: 5px;
     padding: 20px;
     margin-bottom: 30px;
