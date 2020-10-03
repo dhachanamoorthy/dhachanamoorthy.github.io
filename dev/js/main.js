@@ -31,6 +31,16 @@ $q=$('#qualification');
   $('#p').on('click',function(){
     
   });
+  $('#music').on('click',function(){
+    if($('#music').is(':checked')){
+      $("#player")[0].play();
+      console.log("playing");
+    }
+    else{
+      $("#player")[0].pause();
+      console.log("paused");
+    }
+  });
   // Gallery - uses the magnific popup jQuery plugin
   $('.gallery-popup').magnificPopup({
     type: 'image',

@@ -32,7 +32,7 @@
     <div id="loader">
         <div class="indicator">
           <img src="img/loader.gif"/>
-          </div>
+        </div>
     </div>
     <section id="intro">
 
@@ -55,6 +55,16 @@
             <a href="https://www.linkedin.com/in/dhachanamoorthy-n-2831261b7/" target="_blank"><div class="social-media-icon wow pulse wobble" data-wow-iteration="infinite" data-wow-delay="0.9s" data-wow-duration="0.9s"><i class="fa fa-linkedin-square"></i></div></a>
           </div>
           </div>
+          
+      </div>
+      <div class="music-controller">
+        <p>Music</p>
+        <label class="switch">
+            <input type="checkbox" id="music" >
+            <span class="slider round">
+            <span class="ball"></span>
+            </span>
+        </label>
       </div>
     </section>
     <section id="nav-bar">
@@ -152,7 +162,8 @@
         </div>
     </section>
   <!-- <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a> -->
-
+  <!-- <embed src="sounds/music.mp3" loop="false" autoplay="true" autostart="true" type="audio/mp3" /> -->
+  <audio id="player" name="player" loop="true" src="sounds/music.mp3"></audio>
   <!-- JavaScript Libraries -->
   <script src="lib/jquery/jquery.min.js"></script>
   <script src="lib/jquery/jquery-migrate.min.js"></script>
